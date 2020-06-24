@@ -101,39 +101,6 @@ def init():
     )
 
     add_rule(
-        "/build/<string:job>/kernel/<string:kernel>/",
-        view_func=vbuild.BuildsJobKernelView.as_view("job-kernel-builds"),
-        methods=["GET"]
-    )
-    add_rule(
-        "/build/<string:job>/kernel/latest/",
-        view_func=vbuild.BuildsJobKernelView.as_view(
-            "job-kernel-latest-builds"),
-        methods=["GET"]
-    )
-    add_rule(
-        (
-            "/build/<string:job>/kernel/<string:kernel>"
-            "/defconfig/<string:defconfig>/"
-        ),
-        view_func=vbuild.BuildsJobKernelDefconfigView.as_view(
-            "job-kernel-defconf"),
-        methods=["GET"]
-    )
-    add_rule(
-        (
-            "/build/<string:job>/kernel/<string:kernel>"
-            "/defconfig/<string:defconfig>/logs/"
-        ),
-        view_func=vbuild.BuildsLogsView.as_view("job-kernel-defconf-logs"),
-        methods=["GET"]
-    )
-    add_rule(
-        "/build/<string:job>/",
-        view_func=vjob.JobsJobView.as_view("build-job"),
-        methods=["GET"]
-    )
-    add_rule(
         "/build/id/<regex(\"[A-Za-z0-9]{24}\"):uid>/",
         view_func=vbuild.BuildsIdView.as_view("build-id"),
         methods=["GET"]
